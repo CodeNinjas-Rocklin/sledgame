@@ -45,9 +45,17 @@ function RandomInt(num: number) {
     return Math.floor(Math.random() * num);
 }
 
-function Collision(a : Sprite, b : Sprite) {
-    return a.x - a.width / 2 < b.x + b.width / 2 &&
-        a.x + a.width / 2 > b.x - b.width / 2 &&
-        a.y - a.height / 2 < b.y + b.height / 2 &&
-        a.y + a.height / 2 > b.y - b.height / 2;
+function DistanceBetween(a : Sprite, b : Sprite) {
+    return Math.sqrt(((a.x - b.x) * (a.x - b.x)) + ((a.y - b.y) * (a.y - b.y)))
+}
+function Collision(a : Sprite, b : Sprite, s : number) {
+    s = Clamp(s, 0, 1);
+    if(DistanceBetween(a, b) < (a.width + b.width) * s)
+    {
+        return a.x - a.width / 2 < b.x + b.width / 2 &&
+            a.x + a.width / 2 > b.x - b.width / 2 &&
+            a.y - a.height / 2 < b.y + b.height / 2 &&
+            a.y + a.height / 2 > b.y - b.height / 2;
+    }
+    return false;
 }

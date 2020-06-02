@@ -90,11 +90,8 @@ function SetUp () {
         3 3 3 3 3 3 5 5 5 3 3 3 3 3 3 3
         3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
     `
-    player = sprites.create(playerSprite, 0)
     scene.setBackgroundColor(6)
-    player.y = 20
-    speed = 3
-    treeSpeed = 1
+    player = sprites.create(playerSprite, 0)
     list.push(img`
         . . . . . . . . . . . . . . . . . 7 7 . . . . . . . . . . . . .
         . . . . . . . . . . . . . 7 7 7 7 7 7 7 . . . . . . . . . . . .
@@ -131,24 +128,28 @@ function SetUp () {
     `)
     info.setScore(0)
     info.setLife(3)
+    speed = 3
+    player.y = 20
+    treeSpeed = 1
     treesLeft = 5
+    treeTimer = 1
     pointsForSpeed = 10
+    info.setBackgroundColor(9)
+    info.setFontColor(0)
+    info.setBorderColor(10)
 }
 let playerSprite: Image = null
 let blankImage: Image = null
 let iFrames = 0
-let pointsForSpeed = 0
 let newTree: Sprite = null
-let treesLeft = 0
 let treeTimer = 0
+let treesLeft = 0
 let player: Sprite = null
-let treeSpeed = 0
-let speed = 0
 let trees: Sprite[] = []
 let list: Image[] = []
-let tree = null
-let newTree2 = null
-treeTimer = 1
+let pointsForSpeed = 0
+let treeSpeed = 0
+let speed = 0
 SetUp()
 game.onUpdate(function () {
     MovePlayer()
